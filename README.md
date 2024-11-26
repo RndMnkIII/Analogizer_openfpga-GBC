@@ -32,11 +32,11 @@ For example for use it with PSX Dual Shock or Dual Shock 2 native gamepad you mu
 game controllers you must switch the lever on the A side position. 
 Be careful when handling this switch. Use something with a thin, flat tip such as a precision screwdriver with a 2.0mm flat blade for example. Place the tip on the switch lever and press gently until it slides into the desired position:
 ```
-  ---
-   B|O  |A
+     ---
+   B|O  |A  A/B switch on position B
      ---   
-  ---
-   B|  O|A
+     ---
+   B|  O|A  A/B switch on position A
      ---
 ``` 
 
