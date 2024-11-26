@@ -6,14 +6,14 @@ Adapted to Analogizer by [@RndMnkIII](https://github.com/RndMnkIII) based on **b
 The core can output RGBS, RGsB, YPbPr, Y/C and SVGA scandoubler(0%, 25%, 50% 75% scanlines and HQ2x) video signals. 
 This core has an additional **```Analog Wide```** setting which allows to increase the horizontal size of the image on the CRT/SVGA monitor.
 
-| Video output | Status |
-| :----------- | :----: |
-| RGBS         |  ✅    |
-| RGsB         |  ✅    |
-| YPbPr        |  ✅🔹  |
-| Y/C NTSC     |  ✅    |
-| Y/C PAL      |  ✅    |
-| Scandoubler  |  ✅    |
+| Video output | Status | SOG Switch(Only R2,R3 Analogizer) |
+| :----------- | :----: | :-------------------------------: |     
+| RGBS         |  ✅    |     Off                           |
+| RGsB         |  ✅    |     On                            |
+| YPbPr        |  ✅🔹  |     On                            |
+| Y/C NTSC     |  ✅    |     Off                           |
+| Y/C PAL      |  ✅    |     Off                           |
+| Scandoubler  |  ✅    |     Off                           |
 
 🔹 Tested with Sony PVM-9044D
 
@@ -39,6 +39,13 @@ Be careful when handling this switch. Use something with a thin, flat tip such a
    B|  O|A  A/B switch on position A
      ---
 ``` 
+
+The following options exist in the core menu to configure Analogizer:
+* **Analog Wide (Only CRT)** Check: Enable/Disable (this will freeze the Pocket screen in GBC mode, to avoid screen tearing).
+* **SNAC Adapter** List: None, DB15,NES,SNES,PCE,PCE Multitap, SNES swap A,B<->X,Y buttons, PSX (Digital DPAD), PSX (Analog DPAD).
+* **SNAC Controller Assignment** List: several options about how to map SNAC controllers to P1-P4 Pocket controls. The controls not mapped to SNAC by default will map to Pocket connected controllers (Pocket built-in or Dock).
+* **Analogizer Video Out** List: you can choose between RGBS (VGA to SCART), RGsB (some rare SVGA monitors), YPbPr (for TV with component video input),
+Y/C NTSC or PAL (for SVideo o compositive video using Y/C Active adapter by Mike S11), RGBHV for SVGA monitor Scandouble video output.
 
 -----------------------------------------------------------------------------------------------------
 # Gameboy/Game Boy Color for Analogue Pocket
