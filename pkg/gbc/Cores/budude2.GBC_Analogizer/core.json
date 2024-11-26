@@ -3,12 +3,12 @@
     "magic": "APF_VER_1",
     "metadata": {
       "platform_ids": ["gbc"],
-      "shortname": "GBC",
-      "description": "Game Boy Color",
+      "shortname": "GBC_Analogizer",
+      "description": "[Analogizer] Game Boy Color",
       "author": "budude2",
       "url": "https://github.com/budude2/openfpga-GBC",
-      "version": "1.3.1",
-      "date_release": "2024-08-21"
+      "version": "1.0.0",
+      "date_release": "2024-11-26"
     },
     "framework": {
       "target_product": "Analogue Pocket",
