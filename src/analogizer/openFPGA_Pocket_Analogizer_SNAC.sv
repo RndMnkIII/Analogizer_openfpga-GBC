@@ -421,8 +421,8 @@ pcengine_game_controller_multitap #(.MASTER_CLK_FREQ(MASTER_CLK_FREQ)) pcegmutit
 );
 
     always @(*) begin
-        p1_joy_state = 32'h0;
-        p2_joy_state = 32'h0;
+        p1_joy_state = 32'h80808080; //analog stick neutral position value
+        p2_joy_state = 32'h80808080; //analog stick neutral position value
 
         case(game_cont_type)
         GC_DISABLED: begin

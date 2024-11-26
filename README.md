@@ -27,6 +27,8 @@ This core has an additional **```Analog Wide```** setting which allows to increa
 | PSX DS/DS2 Digital DPAD | B                            |  ✅    |
 | PSX DS/DS2 Analog  DPAD | B                            |  ✅    |
 
+The Analogizer interface allow to mix game inputs from compatible SNAC gamepads supported by Analogizer (DB15 Neogeo, NES, SNES, PCEngine, PSX) with Analogue Pocket built-in controls or from Dock USB or wireless supported controllers (Analogue support).
+
 All Analogizer adapter versions (v1, v2 and v3) has a side slide switch labeled as 'A B' that must be configured based on the used SNAC game controller.
 For example for use it with PSX Dual Shock or Dual Shock 2 native gamepad you must position the switch lever on the B side position. For the remaining
 game controllers you must switch the lever on the A side position. 
@@ -44,7 +46,7 @@ The following options exist in the core menu to configure Analogizer:
 * **Analog Wide (Only CRT)** Check: Enable/Disable (this will freeze the Pocket screen in GBC mode, to avoid screen tearing).
 * **SNAC Adapter** List: None, DB15,NES,SNES,PCE,PCE Multitap, SNES swap A,B<->X,Y buttons, PSX (Digital DPAD), PSX (Analog DPAD).
 * **SNAC Controller Assignment** List: several options about how to map SNAC controllers to P1-P4 Pocket controls. The controls not mapped to SNAC by default will map to Pocket connected controllers (Pocket built-in or Dock).
-* **Analogizer Video Out** List: you can choose between RGBS (VGA to SCART), RGsB (some rare SVGA monitors), YPbPr (for TV with component video input),
+* **Analogizer Video Out** List: you can choose between RGBS (VGA to SCART), RGsB (works is a PVM as YPbPr but using RGB color space), YPbPr (for TV with component video input),
 Y/C NTSC or PAL (for SVideo o compositive video using Y/C Active adapter by Mike S11), RGBHV for SVGA monitor Scandouble video output.
 
 -----------------------------------------------------------------------------------------------------
