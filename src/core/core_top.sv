@@ -1,6 +1,6 @@
 `default_nettype none
 
-`define isgbc 1
+`define isgbc 0
 
 module core_top (
 
@@ -1287,6 +1287,17 @@ lcd lcd
   .v_cnt          ( v_cnt                   ),
   .h_end          ( h_end                   )
 );
+// Video
+// wire h_blank;
+// wire v_blank;
+// wire video_hs_gb;
+// wire video_vs_gb;
+// wire [23:0] video_rgb_gb;
+
+// reg video_de_reg;
+// reg video_hs_reg;
+// reg video_vs_reg;
+// reg [23:0] video_rgb_reg;
 
 wire [1:0] joy_p54;
 wire [3:0] joy_do_sgb;
@@ -1383,15 +1394,6 @@ sgb sgb (
   .sgb_lcd_vsync      ( sgb_lcd_vsync                 )
 );
 
-//Analogizer: hsync, vsync fix
-// reg HSync, VSync;
-// always @(posedge clk_ram) begin
-// 	if(ce_pix) begin
-// 		HSync <= video_hs_gb;
-// 		if(~HSync & video_hs_gb) VSync <= video_vs_gb;
-// 	end
-// end
-
 // Video
 wire h_blank;
 wire v_blank;
@@ -1434,7 +1436,7 @@ always_ff @(posedge clk_vid) begin
 
   if (~hs_prev && video_hs_gb) begin
     // HSync went high. Delay by 3 cycles to prevent overlapping with VSync
-    hs_delay <= 7;
+    hs_delay <= 7; //(analog_wide) ? 9 : 7; //hs_delay <= 7;
   end
 
   // Set VSync to be high for a single cycle on the rising edge of the VSync coming out of the core
@@ -1447,16 +1449,20 @@ end
 wire disable_pocket_video = (isGBC & analog_wide) | analogizer_video_type[3]; //The Pocket Screen is garbled when is active at same time GBC mode and Analog Wide.
 assign video_rgb_clock    = clk_vid;
 assign video_rgb_clock_90 = clk_vid_90;
-assign video_de           = (disable_pocket_video) ? 1'b0 : video_de_reg;
-assign video_hs           = (disable_pocket_video) ? 1'b0 : video_hs_reg;
-assign video_vs           = (disable_pocket_video) ? 1'b0 : video_vs_reg;
+// assign video_de           = (disable_pocket_video) ? 1'b0 : video_de_reg;
+// assign video_hs           = (disable_pocket_video) ? 1'b0 : video_hs_reg;
+// assign video_vs           = (disable_pocket_video) ? 1'b0 : video_vs_reg;
+assign video_de           = video_de_reg;
+assign video_hs           = video_hs_reg;
+assign video_vs           = video_vs_reg;
 
 wire [7:0] lum;
 assign lum = (21 * video_rgb_reg[23:16] + 72 * video_rgb_reg[15:8] + 7 * video_rgb_reg[7:0]) / 100;
 
 always_comb begin
   if(~video_de_reg) begin
-    if(sgb_border_en & sgb_en & ~disable_pocket_video) begin
+    // if(sgb_border_en & sgb_en & ~disable_pocket_video) begin
+    if(sgb_border_en & sgb_en) begin
       video_rgb[23:13] = 1;
       video_rgb[12:3]  = 0;
       video_rgb[2:0]   = 0;
@@ -1467,9 +1473,11 @@ always_comb begin
     end
   end else begin
     if (bw_en) begin
+      //video_rgb = {lum, lum, lum};
       if (disable_pocket_video) video_rgb ={24'h000000}; 
       else video_rgb = {lum, lum, lum};
     end else begin
+      //video_rgb = video_rgb_reg;
       if (disable_pocket_video) video_rgb ={24'h000000}; 
       else video_rgb = video_rgb_reg;
     end

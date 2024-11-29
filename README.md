@@ -1,6 +1,7 @@
 # Gameboy/Game Boy Color for Analogue Pocket Core with support for Analogizer-FPGA adapter
 * Analogizer V1.0.0 [26/11/2024]: Added initial support for Analogizer adapter (RGBS, RGsB, YPbPr, Y/C, SVGA Scandoubler) and SNAC (included PSX DS/DS2). The PSX DS/DS2
   can be used in **Digital DPAD** mode (ignores the analog sticks, regardless of the ANALOG button setting on the controller) or in **Analog DPAD** mode (left analog stick is mapped to DPAD movements)
+* Analogizer V1.0.1 [29/11/2024]: When the 'Analog Wide' option is on and the core is working in GBC mode the Pocket screen will blank out to avoid video glitches.
 
 Adapted to Analogizer by [@RndMnkIII](https://github.com/RndMnkIII) based on **budude2** Gameboy/Game Boy Color for Analogue Pocket (https://github.com/budude2/openfpga-GBC).
 The core can output RGBS, RGsB, YPbPr, Y/C and SVGA scandoubler(0%, 25%, 50% 75% scanlines and HQ2x) video signals. 
